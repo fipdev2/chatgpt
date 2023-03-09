@@ -3,8 +3,10 @@ require('dotenv').config();
 
 
 module.exports = class openai {
+
   static configuration() {
     const configuration = new Configuration({
+      organization: "org-kYRuyhVsLkPzwTtFc7mcMLWz",
       apiKey: process.env.OPENAI_API_KEY,
     });
     return new OpenAIApi(configuration)
@@ -12,9 +14,9 @@ module.exports = class openai {
   static textCompletion({ prompt }) {
     return {
       model: "text-davinci-003",
-      prompt,
+      prompt: `${prompt}`,
       temperature: 0,
-      max_tokens: 3500,
+      max_tokens: 2048,
       top_p: 1,
       frequency_penalty: 0.5,
       presence_penalty: 0,
